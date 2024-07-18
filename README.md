@@ -26,14 +26,14 @@ Once you access the dataset from their website, you should have a folder structu
 - OAS42001
 - ...
 
-### <span style="color:red">Precautionaries</span>
+### Precautionaries
 
 During the extraction process, we have assumed some conditions following the sample code given in the dataset. Some of them are listed below.
 
 - A NIFTI file usually contains multiple slices of images. However, for simplification, for each sequence (i.e., anat1, anat2, swi1), the script selects only one slice, the middle slice, with a round-off indexing using the `\\` operator.
 - To label the data using Clinical Dementia Rating (CDR), we have utilized the `OASIS4_data_CDR.csv` file located in the `0AS4_data_files` directory. We labelled the images using the following relationship between the CDR number and the dementia level using the [CDR Scoring table](https://knightadrc.wustl.edu/professionals-clinicians/cdr-dementia-staging-instrument/cdr-scoring-table/).
 - In some cases, there are multiple visits of a subject in the `OASIS4_data_CDR.csv` file. In this case, we chose the CDR record with the least difference between the `visit_days` column of the same subject and the relative day (for example, 3016) from the directory name `OAS42000_MR_d3016`, as shown in the example directory structure above.
-- In the case of sequence selection, while looking for the sequences available in a directory, we excluded directories containing the terms `BIDS`, `Freesurfer`, and `dw`.  `BIDS` includes metadata of the MRI machines and other hardware and software properties, which are not of our interest. On the other hand, `Freesurfer` is brain imaging software [[1]](https://surfer.nmr.mgh.harvard.edu/), which is also not of interest. Lastly, we had to simply remove the `dw` sequences due to their shape inconsistencies compared to other sequences.
+- In the case of sequence selection, while looking for the sequences available in a directory, we excluded directories containing the terms `BIDS` and `Freesurfer`.  `BIDS` includes metadata of the MRI machines and other hardware and software properties, which are not of our interest. On the other hand, `Freesurfer` is brain imaging software [[1]](https://surfer.nmr.mgh.harvard.edu/), which is also not of interest.
 - By default, we chose the `gray` colormap to save the images.
 
 ### Variables
